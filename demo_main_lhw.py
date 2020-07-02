@@ -35,7 +35,8 @@ fps = round(cap.get(cv2.CAP_PROP_FPS))
 ret, frame= cap.read()
 frame= imutils.resize(frame, height=960)
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-ckpt = tf.train.get_checkpoint_state('./weight/new_21words2/')
+#ckpt = tf.train.get_checkpoint_state('./weight/new_21words2/')
+ckpt = tf.train.get_checkpoint_state('./weight/demo/')
 ## vad case
 out = cv2.VideoWriter('demo_result.avi',fourcc, 10,(frame.shape[1],frame.shape[0]))
 start_i, end_i, mid_i = vad.generate(input_avi, fps) # VAD of file

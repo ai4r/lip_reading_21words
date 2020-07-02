@@ -10,7 +10,7 @@ import cnn
 import input
 import vad_demo as vad
 import tensorflow as tf
-os.environ["CUDA_VISIBLE_DEVICES"]="1"
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 # input files
 
@@ -36,6 +36,10 @@ ret, frame= cap.read()
 frame= imutils.resize(frame, height=960)
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 ckpt = tf.train.get_checkpoint_state('./weight/new_21words/')
+#ckpt = tf.train.get_checkpoint_state('./weight/demo')
+#ckpt = tf.train.get_checkpoint_state('./weight/train_mix1_MI')
+#ckpt = tf.train.get_checkpoint_state('./weight/train_mix1_MS')
+#ckpt = tf.train.get_checkpoint_state('./weight/train_mix1_MT')
 ## vad case
 out = cv2.VideoWriter('demo_result.avi',fourcc, 10,(frame.shape[1],frame.shape[0]))
 start_i, end_i, mid_i = vad.generate(input_avi, fps) # VAD of file
@@ -162,8 +166,8 @@ while(cap.isOpened()):
                 saver = tf.train.Saver()
                 sess=tf.Session()
 
-                # Restores from checkpoint      
-                saver.restore(sess, ckpt.model_checkpoint_path) 
+                # Restores from checkpoint
+                saver.restore(sess, ckpt.model_checkpoint_path)
 
                 coord = tf.train.Coordinator()
                 try:
