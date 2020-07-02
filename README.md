@@ -5,7 +5,7 @@
 KAIST Lip reading module for HumanCare Project
 
 ## Environment
-Test on ubuntu 16.04, Python3.5.2
+Test on Ubuntu 16.04, Python3.5.2
 
 ## Dependencies
 
