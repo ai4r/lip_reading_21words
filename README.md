@@ -19,7 +19,7 @@ opencv-python==4.2.0.34
 
 imutils==0.5.3
 
-tensorflow-gpu>1.12
+tensorflow-gpu==1.12.0
 
 
 ## Getting Started
